@@ -11,9 +11,6 @@ MAINTAINER Miguel Julio
 
 # Install Nginx
 
-# Add application repository URL to the default sources
-RUN echo "deb http://archive.ubuntu.com/ubuntu/ raring main universe" >> /etc/apt/sources.list
-
 # Update the repository
 RUN apt-get update
 
