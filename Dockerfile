@@ -4,21 +4,22 @@
 ############################################################
 
 # Set the base image to Ubuntu
-FROM ubuntu
+FROM nginx
 
 # File Author / Maintainer
 MAINTAINER Miguel Julio
-
-# Install Nginx
 
 # Update the repository
 RUN apt-get update
 
 # Install necessary tools
-RUN apt-get install -y nano wget dialog net-tools
+RUN apt-get install -y vim curl net-tools
 
-# Download and Install Nginx
-RUN apt-get install -y nginx
+# Uses my local nginx configuration file
+ADD ./nginx.conf /etc/nginx/conf.d/default.conf
+
+# Uses my local files
+ADD /fitfab /www
 
 # Append "daemon off;" to the beginning of the configuration
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
